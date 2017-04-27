@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>The Light Game</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <h2 class="title">The Light Game</h2>
+
+        <div id="startArea" style="text-align: center;">
+            <div>
+                <button id="start" class="begin" onclick="onStartGame(this)" > Start Game</button>
+            </div>
+            <div class="formtext">
+                  Number of Buttons:
+                  <input type="number" id="numButtons" name="numButtons" min="4" max="100" value="4">
+            </div>
+            <div class="formtext">
+                  Number of Associations per Button (between 1 and 50):
+                  <input type="number" id="numAssociations" name="numAssociations" min="1" max="50" value="1">
+               
+            </div>
+        
+        </div>
+
+        <div id="buttonArea" style="text-align: center;">
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <p class=footer> By Ben Jones for Flipword </p>
+        <p class=footer> btjones.me@gmail.com</p>
+
+        <script src="thelightgame.js"></script>
+    </body>
+</html>
