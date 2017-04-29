@@ -31,7 +31,6 @@ function onStartGame(startBtn){
 
     //Generate a list of the buttons for easier use later
     ELEMENTLIST = document.getElementsByClassName("gamebutton");
-    console.log(ELEMENTLIST.length)
 
     setAssociation()
 }
