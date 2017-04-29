@@ -17,8 +17,8 @@ function onStartGame(startBtn){
     }
 
     //Grab the number of buttons and associations. No fancy way to do this without JQuery 
-    NUMBUTTONS = parseInt(document.getElementById("numButtons").value[0]);
-    NUMASSOCIATIONS = parseInt(document.getElementById("numAssociations").value[0]);
+    NUMBUTTONS = parseInt(document.getElementById("numButtons").value);
+    NUMASSOCIATIONS = parseInt(document.getElementById("numAssociations").value);
 
     //Add the buttons
     for (let i = 1; i < NUMBUTTONS +1; i++){
@@ -30,7 +30,8 @@ function onStartGame(startBtn){
     }
 
     //Generate a list of the buttons for easier use later
-    ELEMENTLIS = document.getElementsByClassName("gamebutton");
+    ELEMENTLIST = document.getElementsByClassName("gamebutton");
+    console.log(ELEMENTLIST.length)
 
     setAssociation()
 }
@@ -40,15 +41,15 @@ function setAssociation(){
 
     //Generate a list of all Ids for use later
     const allIds = [] 
-    for(let i = 0; i < ELEMENTLIS.length; i++){
-        allIds.push(ELEMENTLIS[i].id)
+    for(let i = 0; i < ELEMENTLIST.length; i++){
+        allIds.push(ELEMENTLIST[i].id)
     }
 
     //for all the ids, go through each and add the association id(s) (potentially more than one per button)
-    for(let i = 0; i < ELEMENTLIS.length; i++){ 
+    for(let i = 0; i < ELEMENTLIST.length; i++){ 
         //Get a copy of the list of all the ids, then remove the current element because that's not a valid id
         let listOfValidIds = allIds.slice()
-        removeValueFromArray(listOfValidIds, ELEMENTLIS[i].id) 
+        removeValueFromArray(listOfValidIds, ELEMENTLIST[i].id) 
         for(let j = 0; j < NUMASSOCIATIONS; j++){ //Add the number of associations asked for ie. 1, 2, 3 etc
             //get a random id from the list of valid ids
             //A list of valid ids to associate to is any id that aren't the current id, or any ids it's already chosen
@@ -56,11 +57,11 @@ function setAssociation(){
             removeValueFromArray(listOfValidIds, randomId) //remove the random id from the list of valid ids for this button
 
             //add the random associated button id to the dictionary containing the associations
-            if (ELEMENTLIS[i].id in ASSOCIATIONSDICT){
-                ASSOCIATIONSDICT[ELEMENTLIS[i].id].push(randomId)  //add it to the list
+            if (ELEMENTLIST[i].id in ASSOCIATIONSDICT){
+                ASSOCIATIONSDICT[ELEMENTLIST[i].id].push(randomId)  //add it to the list
             }
             else{ 
-                ASSOCIATIONSDICT[ELEMENTLIS[i].id] = [randomId] //initialise the list if this is the first association
+                ASSOCIATIONSDICT[ELEMENTLIST[i].id] = [randomId] //initialise the list if this is the first association
                 
             }
         }
